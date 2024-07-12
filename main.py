@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dbs.db'
 #define database
 db = SQLAlchemy(app)
 
-#define the user model,check the columns we need
+#define the user model and iput all the columns we need
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(58), nullable=False)
@@ -20,7 +20,7 @@ def create_db():
     with app.app_context():
         db.create_all()
 
-    #create the routes
+    #created the routes books, add-book, new book
 @app.route('/')
 def books():
     books = Book.query.all()
